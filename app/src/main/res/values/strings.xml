@@ -2,8 +2,12 @@
     <string name="app_name">CheckCount</string>
     <string name="firstText">check yourself</string>
     <string name="signUpText">SIGN UP</string>
+    <string name="name">name</string>
+    <string name="surname">surname</string>
     <string name="username">username*</string>
     <string name="email">email*</string>
     <string name="password">password*</string>
     <string name="password2">confirm password*</string>
+    <string name="number">phone number</string>
+    <string name="button">Register</string>
 </resources>
