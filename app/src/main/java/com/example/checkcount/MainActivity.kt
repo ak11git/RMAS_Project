@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.checkcount.app.PostApp
+import com.example.checkcount.screens.RegOrLogin
 import com.example.checkcount.screens.SignUp
 import com.example.checkcount.ui.theme.CheckCountTheme
 
@@ -19,7 +20,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             PostApp()
-            SignUp()
             }
         }
 }

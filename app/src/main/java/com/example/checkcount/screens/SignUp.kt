@@ -16,12 +16,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.checkcount.R
 import com.example.checkcount.components.ButtonRegister
+import com.example.checkcount.components.CheckBox
 import com.example.checkcount.components.NameInput
 //import com.example.checkcount.components.EmailInput
 import com.example.checkcount.components.NormalText
 import com.example.checkcount.components.NumberInput
 //import com.example.checkcount.components.Password2Input
 import com.example.checkcount.components.PasswordInput
+import com.example.checkcount.components.RequestContentPermission
 import com.example.checkcount.components.SignUpText
 import com.example.checkcount.components.SurnameInput
 import com.example.checkcount.components.UsernameInput
@@ -37,10 +39,6 @@ fun SignUp() {
             .padding(28.dp)
     ) {
 
-        val firstFocusRequester = remember { FocusRequester() }
-        val secondFocusRequester = remember { FocusRequester() }
-        val scope = rememberCoroutineScope()
-
         Column {
             NormalText(value = stringResource(id = R.string.firstText))
             SignUpText(value = stringResource(id = R.string.signUpText))
@@ -51,7 +49,9 @@ fun SignUp() {
             PasswordInput(stringResource(id = R.string.password))
             //Password2Input(stringResource(id = R.string.password2))
             NumberInput(stringResource(id = R.string.number))
-            ButtonRegister(stringResource(id = R.string.button))
+            CheckBox(stringResource(id = R.string.checkBox))
+            ButtonRegister(stringResource(id = R.string.buttonRegisterScreen))
+            RequestContentPermission()
         }
     }
 }

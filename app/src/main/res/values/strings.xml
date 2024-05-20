@@ -9,5 +9,8 @@
     <string name="password">password*</string>
     <string name="password2">confirm password*</string>
     <string name="number">phone number</string>
-    <string name="button">Register</string>
+    <string name="hidePassword">Hide Password</string>
+    <string name="showPassword">Show Password</string>
+    <string name="checkBox">teext</string>
+    <string name="buttonRegisterScreen">Register</string>
 </resources>
