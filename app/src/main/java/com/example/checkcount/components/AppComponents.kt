@@ -7,8 +7,10 @@ import android.os.Build
 import android.provider.MediaStore
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -19,6 +21,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
@@ -59,69 +62,55 @@ import com.example.checkcount.R
 import com.example.checkcount.navigation.Nav
 import com.example.checkcount.navigation.Screen
 import com.example.checkcount.ui.theme.Primary
-import com.example.checkcount.ui.theme.Secondary
 
 @Composable
 fun ButtonReg(value: String) {
-    Button(
-        onClick = { Nav.goTo(Screen.SignUpScreen) },
-        modifier = Modifier
-            .fillMaxWidth()
-            .heightIn(48.dp),
-        contentPadding = PaddingValues(10.dp),
-        colors = ButtonDefaults.buttonColors(Color.Transparent),
-        shape = RoundedCornerShape(20.dp)
-    ) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .heightIn(48.dp)
-                .background(
-                    brush = Brush.verticalGradient(listOf(Color.Gray, Color.Black)),
-                    shape = RoundedCornerShape(20.dp)
-                ),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(
-                text = value,
-                fontSize = 24.sp,
-                color = Color.White,
-                fontWeight = FontWeight.Bold
-            )
-        }
-
+    Button(onClick = { Nav.goTo(Screen.RegisterScreen) },
+        modifier = Modifier.width(170.dp).padding(10.dp),
+        shape = RoundedCornerShape(10.dp),
+        elevation = ButtonDefaults.buttonElevation(
+            defaultElevation = 10.dp,
+            pressedElevation = 6.dp
+        ),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = Color.DarkGray,
+            contentColor = Color.Gray
+        ),
+        border = BorderStroke(2.dp, Color.Magenta)
+    )
+    {
+        Text(
+            text = value,
+            fontSize = 24.sp,
+            color = Color.White,
+            fontWeight = FontWeight.Bold
+        )
     }
+
 }
 
 @Composable
 fun ButtonLog(value: String) {
-    Button(
-        onClick = { Nav.goTo(Screen.SignUpScreen) },
-        modifier = Modifier
-            .fillMaxWidth()
-            .heightIn(48.dp),
-        contentPadding = PaddingValues(10.dp),
-        colors = ButtonDefaults.buttonColors(Color.Transparent),
-        shape = RoundedCornerShape(20.dp)
-    ) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .heightIn(48.dp)
-                .background(
-                    brush = Brush.verticalGradient(listOf(Color.Gray, Color.Black)),
-                    shape = RoundedCornerShape(20.dp)
-                ),
-            contentAlignment = Alignment.Center
-        ) {
+    Button(onClick = { Nav.goTo(Screen.LoginScreen) },
+        modifier = Modifier.width(170.dp).padding(10.dp),
+        shape = RoundedCornerShape(10.dp),
+        elevation = ButtonDefaults.buttonElevation(
+                    defaultElevation = 10.dp,
+                    pressedElevation = 6.dp
+        ),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = Color.DarkGray,
+            contentColor = Color.Gray
+        ),
+        border = BorderStroke(2.dp, Color.Magenta)
+            )
+    {
             Text(
                 text = value,
                 fontSize = 24.sp,
                 color = Color.White,
                 fontWeight = FontWeight.Bold
             )
-        }
-
     }
 }
 
@@ -420,7 +409,18 @@ fun RequestContentPermission() {
         imageUri = uri
     }
     Column {
-        Button(onClick = { launcher.launch("image/*") }) {
+        Button(onClick = { launcher.launch("image/*") },
+            modifier = Modifier.width(170.dp).padding(10.dp),
+            shape = RoundedCornerShape(10.dp),
+            elevation = ButtonDefaults.buttonElevation(
+                defaultElevation = 10.dp,
+                pressedElevation = 6.dp
+            ),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color.Gray,
+                contentColor = Color.White
+            ),
+            border = BorderStroke(2.dp, Color.DarkGray)) {
             Text(text = "Pick image")
         }
 
@@ -440,7 +440,15 @@ fun RequestContentPermission() {
             bitmap.value?.let {  btm ->
                 Image(bitmap = btm.asImageBitmap(),
                     contentDescription =null,
-                    modifier = Modifier.size(400.dp))
+                    modifier = Modifier.size(150.dp)
+                        .clip(RoundedCornerShape(10.dp))
+                        .background(Color.Gray)
+                        .border(
+                            width = 2.dp,
+                            color = Color.DarkGray,
+                        )
+                        .align(Alignment.CenterHorizontally)
+                )
             }
         }
 

@@ -8,8 +8,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.example.checkcount.navigation.Nav
 import com.example.checkcount.navigation.Screen
+import com.example.checkcount.screens.Login
 import com.example.checkcount.screens.RegOrLogin
-import com.example.checkcount.screens.SignUp
+import com.example.checkcount.screens.Register
 
 @Composable
 fun PostApp() {
@@ -22,8 +23,11 @@ fun PostApp() {
                 is Screen.RegOrLogScreen ->{
                     RegOrLogin()
                 }
-                is Screen.SignUpScreen ->{
-                    SignUp()
+                is Screen.RegisterScreen ->{
+                    Register()
+                }
+                is Screen.LoginScreen ->{
+                    Login()
                 }
             }
         }

@@ -1,15 +1,16 @@
 package com.example.checkcount.screens
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -27,10 +28,9 @@ import com.example.checkcount.components.RequestContentPermission
 import com.example.checkcount.components.SignUpText
 import com.example.checkcount.components.SurnameInput
 import com.example.checkcount.components.UsernameInput
-import kotlinx.coroutines.launch
 
 @Composable
-fun SignUp() {
+fun Register() {
     Surface (
         color = colorResource(id = R.color.gray),
         modifier = Modifier
@@ -39,7 +39,12 @@ fun SignUp() {
             .padding(28.dp)
     ) {
 
-        Column {
+        Column (
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .verticalScroll(rememberScrollState()))
+        {
             NormalText(value = stringResource(id = R.string.firstText))
             SignUpText(value = stringResource(id = R.string.signUpText))
             NameInput(stringResource(id = R.string.name))
@@ -49,9 +54,9 @@ fun SignUp() {
             PasswordInput(stringResource(id = R.string.password))
             //Password2Input(stringResource(id = R.string.password2))
             NumberInput(stringResource(id = R.string.number))
+            RequestContentPermission()
             CheckBox(stringResource(id = R.string.checkBox))
             ButtonRegister(stringResource(id = R.string.buttonRegisterScreen))
-            RequestContentPermission()
         }
     }
 }
@@ -59,5 +64,5 @@ fun SignUp() {
 @Preview
 @Composable
 fun DefaultPreviewSignUp() {
-    SignUp()
+    Register()
 }
