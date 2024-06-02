@@ -13,4 +13,5 @@
     <string name="showPassword">Show Password</string>
     <string name="checkBox">teext</string>
     <string name="buttonRegisterScreen">Register</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>

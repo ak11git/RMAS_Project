@@ -169,7 +169,8 @@ fun NameInput(labelValue:String) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_username),
                 contentDescription = "")
-        }
+        },
+        maxLines = 1
     )
 }
 
@@ -193,7 +194,8 @@ fun SurnameInput(labelValue:String) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_username),
                 contentDescription = "")
-        }
+        },
+        maxLines = 1
     )
 }
 
@@ -217,7 +219,8 @@ fun UsernameInput(labelValue:String) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_username),
                 contentDescription = "")
-        }
+        },
+        maxLines = 1
     )
 }
 
@@ -263,6 +266,7 @@ fun PasswordInput(labelValue:String) {
             focusedLabelColor = Primary,
             cursorColor = Primary
         ),
+        maxLines = 1,
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
 
         leadingIcon = {
@@ -335,6 +339,7 @@ fun NumberInput(labelValue:String) {
             focusedLabelColor = Primary,
             cursorColor = Primary
         ),
+        maxLines = 1,
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
 
         leadingIcon = {

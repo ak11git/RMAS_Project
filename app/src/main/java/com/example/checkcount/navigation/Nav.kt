@@ -7,6 +7,7 @@ sealed class Screen {
     object RegOrLogScreen : Screen()
     object RegisterScreen : Screen()
     object LoginScreen : Screen()
+    object MapScreen : Screen()
 }
 
 object Nav {

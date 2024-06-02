@@ -17,6 +17,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -37,15 +38,15 @@ import com.example.checkcount.R
 @Composable
 fun Login(){
 
-    var email = remember { mutableStateOf("") }
+    val email = remember { mutableStateOf("") }
 
-    var password = remember { mutableStateOf("") }
+    val password = remember { mutableStateOf("") }
 
     Surface (
-        color = colorResource(id = R.color.gray),
+        color = colorResource(id = R.color.lightBlue),
         modifier = Modifier
             .fillMaxSize()
-            .background(colorResource(id = R.color.gray))
+            .background(colorResource(id = R.color.lightBlue))
             .padding(28.dp)
     ) {
         Column(
@@ -69,7 +70,14 @@ fun Login(){
             OutlinedTextField(
                 value = email.value,
                 onValueChange = { email.value = it },
-                label = { Text(text = "Email address") }
+                label = { Text(text = "Email address") },
+                maxLines = 1,
+                leadingIcon = {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_username),
+                        contentDescription = ""
+                    )
+                }
             )
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -77,7 +85,14 @@ fun Login(){
             OutlinedTextField(
                 value = password.value,
                 onValueChange = { password.value = it },
-                label = { Text(text = "Password") }
+                label = { Text(text = "Password") },
+                maxLines = 1,
+                leadingIcon = {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_password),
+                        contentDescription = ""
+                    )
+                }
             )
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -92,10 +107,10 @@ fun Login(){
                     pressedElevation = 6.dp
                 ),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color.Gray,
+                    containerColor = colorResource(id = R.color.darkBlue),
                     contentColor = Color.White
                 ),
-                border = BorderStroke(2.dp, Color.DarkGray)
+                border = BorderStroke(2.dp, colorResource(id = R.color.strongBlue))
             ) {
                 Text(text = "Login")
             }

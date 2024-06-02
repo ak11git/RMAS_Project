@@ -9,6 +9,7 @@ import androidx.compose.ui.graphics.Color
 import com.example.checkcount.navigation.Nav
 import com.example.checkcount.navigation.Screen
 import com.example.checkcount.screens.Login
+import com.example.checkcount.screens.MapScreen
 import com.example.checkcount.screens.RegOrLogin
 import com.example.checkcount.screens.Register
 
@@ -28,6 +29,9 @@ fun PostApp() {
                 }
                 is Screen.LoginScreen ->{
                     Login()
+                }
+                is Screen.MapScreen ->{
+                    MapScreen()
                 }
             }
         }

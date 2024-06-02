@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "532657797088",
+    "project_id": "rmas-424221",
+    "storage_bucket": "rmas-424221.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:532657797088:android:9163d5fd2483f717109d85",
+        "android_client_info": {
+          "package_name": "com.example.checkcount"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZMsGWlpGkeuJtJze6HYo9cweFL2FTt2o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -23,10 +23,10 @@ import com.example.checkcount.components.ButtonReg
 @Composable
 fun RegOrLogin() {
     Surface (
-        color = colorResource(id = R.color.gray),
+        color = colorResource(id = R.color.lightBlue),
         modifier = Modifier
             .fillMaxSize()
-            .background(colorResource(id = R.color.gray))
+            .background(colorResource(id = R.color.lightBlue))
             .padding(28.dp)
     ) {
         Image(painter = painterResource(id = R.drawable.ic_launcher_foreground), contentDescription = "")
