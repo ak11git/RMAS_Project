@@ -17,6 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.checkcount.R
 import com.example.checkcount.components.ButtonLog
+import com.example.checkcount.components.ButtonMap
 import com.example.checkcount.components.ButtonReg
 
 
@@ -39,6 +40,7 @@ fun RegOrLogin() {
             ButtonReg("Register")
             ButtonLog("Login")
         }
+        //ButtonMap("Map")
     }
 }
 

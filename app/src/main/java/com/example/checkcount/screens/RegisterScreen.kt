@@ -1,7 +1,10 @@
 package com.example.checkcount.screens
 
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.ImageDecoder
+import android.graphics.Matrix
+import android.media.ExifInterface
 import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
@@ -50,6 +53,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -63,6 +67,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -72,6 +77,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.checkcount.R
+import com.example.checkcount.navigation.Nav
+import com.example.checkcount.navigation.Screen
 
 @Composable
 fun Register(
@@ -89,6 +96,37 @@ fun Register(
             .background(colorResource(id = R.color.lightBlue))
             .padding(28.dp)
     ) {
+
+        val nameValue = remember { mutableStateOf("") }
+        val nameValue1 = remember { mutableStateOf("") }
+        val nameValue2 = remember { mutableStateOf("") }
+        val passwordValue = remember { mutableStateOf("") }
+        val nameValue3 = remember { mutableStateOf("") }
+        val checkedState = remember { mutableStateOf(false) }
+        val (isImageSelected, setImageSelected) = remember { mutableStateOf(false) }
+
+        var isFormValid = remember(nameValue, nameValue1, nameValue2, passwordValue, nameValue3, agree, isImageSelected) {
+            nameValue.value.isNotBlank() && nameValue1.value.isNotBlank() && nameValue2.value.isNotBlank() &&
+                    passwordValue.value.isNotBlank() && nameValue3.value.isNotBlank() && agree && isImageSelected
+        }
+
+        fun updateFormValidity() {
+            val isNameValid = nameValue.value.isNotBlank()
+            val isSurnameValid = nameValue1.value.isNotBlank()
+            val isUsernameValid = nameValue2.value.isNotBlank()
+            val isPasswordValid = passwordValue.value.isNotBlank()
+            val isNumberValid = nameValue3.value.isNotBlank()
+            isFormValid = isNameValid && isSurnameValid && isUsernameValid
+                    && isPasswordValid && isNumberValid && agree && isImageSelected
+
+            onAgreeChange(isFormValid)
+        }
+
+        fun Bitmap.rotate(degrees: Float): Bitmap {
+            val matrix = Matrix().apply { postRotate(degrees) }
+            return Bitmap.createBitmap(this, 0, 0, width, height, matrix, true)
+        }
+
 
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -126,7 +164,6 @@ fun Register(
             )
 
             //NameInput(stringResource(id = R.string.name))
-            val nameValue = remember { mutableStateOf("") }
 
             OutlinedTextField(
                 modifier = Modifier
@@ -134,7 +171,8 @@ fun Register(
                     .clip(RoundedCornerShape(5.dp)),
                 label = { Text(text = stringResource(id = R.string.name)) },
                 value = nameValue.value,
-                onValueChange = { nameValue.value = it },
+                onValueChange = { nameValue.value = it
+                    updateFormValidity()},
                 leadingIcon = {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_username),
@@ -145,7 +183,6 @@ fun Register(
             )
 
             //SurnameInput(stringResource(id = R.string.surname))
-            val nameValue1 = remember { mutableStateOf("") }
 
             OutlinedTextField(
                 modifier = Modifier
@@ -153,7 +190,8 @@ fun Register(
                     .clip(RoundedCornerShape(5.dp)),
                 label = { Text(text = stringResource(id = R.string.surname)) },
                 value = nameValue1.value,
-                onValueChange = { nameValue1.value = it },
+                onValueChange = { nameValue1.value = it
+                    updateFormValidity()},
                 leadingIcon = {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_username),
@@ -164,7 +202,6 @@ fun Register(
             )
 
             //UsernameInput(stringResource(id = R.string.username))
-            val nameValue2 = remember { mutableStateOf("") }
 
             OutlinedTextField(
                 modifier = Modifier
@@ -172,7 +209,8 @@ fun Register(
                     .clip(RoundedCornerShape(5.dp)),
                 label = { Text(text = stringResource(id = R.string.username)) },
                 value = nameValue2.value,
-                onValueChange = { nameValue2.value = it },
+                onValueChange = { nameValue2.value = it
+                    updateFormValidity()},
                 leadingIcon = {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_username),
@@ -185,7 +223,6 @@ fun Register(
 
             //PasswordInput(stringResource(id = R.string.password))
 
-            val passwordValue = remember { mutableStateOf("") }
 
             val passwordVisible = remember { mutableStateOf(false) }
 
@@ -195,7 +232,8 @@ fun Register(
                     .clip(RoundedCornerShape(5.dp)),
                 label = { Text(text = stringResource(id = R.string.password)) },
                 value = passwordValue.value,
-                onValueChange = { passwordValue.value = it },
+                onValueChange = { passwordValue.value = it
+                    updateFormValidity()},
                 maxLines = 1,
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                 leadingIcon = {
@@ -228,7 +266,6 @@ fun Register(
             //Password2Input(stringResource(id = R.string.password2))
 
             //NumberInput(stringResource(id = R.string.number))
-            val nameValue3 = remember { mutableStateOf("") }
 
             OutlinedTextField(
                 modifier = Modifier
@@ -236,7 +273,8 @@ fun Register(
                     .clip(RoundedCornerShape(5.dp)),
                 label = { Text(text = stringResource(id = R.string.number)) },
                 value = nameValue3.value,
-                onValueChange = { nameValue3.value = it },
+                onValueChange = { nameValue3.value = it
+                    updateFormValidity()},
                 maxLines = 1,
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
 
@@ -260,6 +298,7 @@ fun Register(
                 ActivityResultContracts.GetContent()
             ) { uri: Uri? ->
                 imageUri = uri
+                setImageSelected(imageUri != null) //true ako je slika izabrana
             }
             Column {
                 Button(
@@ -281,20 +320,31 @@ fun Register(
 
                 Spacer(modifier = Modifier.height(12.dp))
 
-                imageUri?.let {
-                    if (Build.VERSION.SDK_INT < 28) {
-                        bitmap.value = MediaStore.Images
-                            .Media.getBitmap(context.contentResolver, it)
+                imageUri?.let { uri ->
+                    val contentResolver = context.contentResolver
 
-                    } else {
-                        val source = ImageDecoder
-                            .createSource(context.contentResolver, it)
-                        bitmap.value = ImageDecoder.decodeBitmap(source)
+                    val inputStream = contentResolver.openInputStream(uri)
+                    val options = BitmapFactory.Options().apply {
+                        inPreferredConfig = Bitmap.Config.ARGB_8888
+                        inSampleSize = 1
                     }
+                    val bitmap = BitmapFactory.decodeStream(inputStream, null, options)
+                    inputStream?.close()
 
-                    bitmap.value?.let { btm ->
+                    bitmap?.let { btm ->
+                        // Rotiranje slike ako je potrebno
+                        val exif = ExifInterface(contentResolver.openInputStream(uri)!!)
+                        val orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)
+                        val rotatedBitmap = when (orientation) {
+                            ExifInterface.ORIENTATION_ROTATE_90 -> btm.rotate(90f)
+                            ExifInterface.ORIENTATION_ROTATE_180 -> btm.rotate(180f)
+                            ExifInterface.ORIENTATION_ROTATE_270 -> btm.rotate(270f)
+                            else -> btm
+                        }
+
+                        // Prikaz slike
                         Image(
-                            bitmap = btm.asImageBitmap(),
+                            bitmap = rotatedBitmap.asImageBitmap(),
                             contentDescription = null,
                             modifier = Modifier.size(150.dp)
                                 .clip(RoundedCornerShape(10.dp))
@@ -307,6 +357,29 @@ fun Register(
                         )
                     }
                 }
+                Button(
+                    onClick = {
+                        imageUri = null // Postavi imageUri na null kada se pritisne dugme za uklanjanje slike
+                        setImageSelected(false) // Postavi isImageSelected na false
+                    },
+                    enabled = isImageSelected,
+                    modifier = Modifier
+                        .width(170.dp)
+                        .alpha(if (isImageSelected) 1f else 0.5f)
+                        .padding(10.dp),
+                    shape = RoundedCornerShape(10.dp),
+                    elevation = ButtonDefaults.buttonElevation(
+                        defaultElevation = 10.dp,
+                        pressedElevation = 6.dp
+                    ),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = colorResource(id = R.color.darkBlue),
+                        contentColor = Color.White
+                    ),
+                    border = BorderStroke(2.dp, colorResource(id = R.color.strongBlue))
+                ) {
+                    Text(text = "Remove image")
+                }
 
             }
 
@@ -318,7 +391,7 @@ fun Register(
                     .padding(16.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                val checkedState = remember { mutableStateOf(false) }
+
 
                 val privacyText = "Privacy"
                 val policyText = "Policy"
@@ -362,9 +435,11 @@ fun Register(
 
                 //ButtonRegister(stringResource(id = R.string.buttonRegisterScreen))
                 Button(
-                    onClick = { /*TODO*/ },
+                    onClick = { Nav.goTo(Screen.MapScreen) },
+                    enabled = isFormValid,
                     modifier = Modifier
                         .fillMaxWidth()
+                        .alpha(if (isFormValid) 1f else 0.5f)
                         .heightIn(48.dp),
                     contentPadding = PaddingValues(10.dp),
                     colors = ButtonDefaults.buttonColors(Color.Transparent),
@@ -393,6 +468,7 @@ fun Register(
             }
         }
 }
+
 
 @Preview
 @Composable

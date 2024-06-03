@@ -115,6 +115,31 @@ fun ButtonLog(value: String) {
 }
 
 @Composable
+fun ButtonMap(value: String) {
+    Button(onClick = { Nav.goTo(Screen.MapScreen) },
+        modifier = Modifier.width(170.dp).padding(10.dp),
+        shape = RoundedCornerShape(10.dp),
+        elevation = ButtonDefaults.buttonElevation(
+            defaultElevation = 10.dp,
+            pressedElevation = 6.dp
+        ),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = Color.DarkGray,
+            contentColor = Color.Gray
+        ),
+        border = BorderStroke(2.dp, Color.Magenta)
+    )
+    {
+        Text(
+            text = value,
+            fontSize = 24.sp,
+            color = Color.White,
+            fontWeight = FontWeight.Bold
+        )
+    }
+}
+
+@Composable
 fun NormalText(value:String) {
     Text(
         text = value,
