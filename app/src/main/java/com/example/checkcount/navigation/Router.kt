@@ -15,10 +15,10 @@ import androidx.navigation.navArgument
 import com.example.checkcount.repository.Resource
 import com.example.checkcount.model.Obj
 import com.example.checkcount.model.User
-import com.example.checkcount.screens.ObjScreen
 import com.example.checkcount.screens.IndexScreen
 import com.example.checkcount.viewModels.AuthViewModel
 import com.example.checkcount.screens.LoginScreen
+import com.example.checkcount.screens.ObjScreen
 import com.example.checkcount.screens.RankingScreen
 import com.example.checkcount.screens.RegisterScreen
 import com.example.checkcount.screens.SettingScreen
@@ -28,6 +28,7 @@ import com.example.checkcount.viewModels.ObjViewModel
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.auth.FirebaseAuth
+import com.google.gson.Gson
 import com.google.maps.android.compose.rememberCameraPositionState
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -111,7 +112,7 @@ fun Router(
                 cameraPositionState = rememberCameraPositionState {
                     position = CameraPosition.fromLatLngZoom(LatLng(latitude!!.toDouble(), longitude!!.toDouble()), 17f)
                 },
-                beachMarkers = objMarkers
+                objMarkers = objMarkers
             )
         }
         composable(
@@ -196,7 +197,7 @@ fun Router(
             ObjScreen(
                 obj = obj,
                 navController = navController,
-                ObjViewModel = ObjViewModel,
+                objViewModel = ObjViewModel,
                 viewModel = viewModel,
                 objs = objs.toMutableList()
             )
@@ -213,7 +214,7 @@ fun Router(
             UserProfileScreen(
                 navController = navController,
                 viewModel = viewModel,
-                ObjViewModel = ObjViewModel,
+                objViewModel = ObjViewModel,
                 userData = userData,
                 isMy = isMy
             )
@@ -224,7 +225,7 @@ fun Router(
         ){ backStackEntry ->
             val objsJson = backStackEntry.arguments?.getString("objs")
             val objs = Gson().fromJson(objsJson, Array<Obj>::class.java).toList()
-            TableScreen(objs = objs, navController = navController, ObjViewModel = ObjViewModel)
+            TableScreen(objs = objs, navController = navController, objViewModel = ObjViewModel)
         }
         
         composable(Routes.settingsScreen){

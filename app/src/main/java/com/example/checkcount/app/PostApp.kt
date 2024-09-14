@@ -5,20 +5,14 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.app.ActivityCompat
-import com.example.checkcount.navigation.Nav
+import com.example.checkcount.location.LocationService
 import com.example.checkcount.navigation.Router
-import com.example.checkcount.navigation.Screen
-import com.example.checkcount.screens.LoginScreen
-import com.example.checkcount.screens.MapScreen
-import com.example.checkcount.screens.Register
 import com.example.checkcount.viewModels.AuthViewModel
 import com.example.checkcount.viewModels.ObjViewModel
 

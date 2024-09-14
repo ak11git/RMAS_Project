@@ -41,8 +41,8 @@ class ObjRepositoryImpl : ObjRepository {
         return try{
             val currentUser = firebaseAuth.currentUser
             if(currentUser!=null){
-                val mainImageUrl = storageService.uploadBeachMainImage(mainImage)
-                val galleryImagesUrls = storageService.uploadBeachGalleryImages(galleryImages)
+                val mainImageUrl = storageService.uploadObjMainImage(mainImage)
+                val galleryImagesUrls = storageService.uploadObjGalleryImages(galleryImages)
                 val geoLocation = GeoPoint(
                     location.latitude,
                     location.longitude

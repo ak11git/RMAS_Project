@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AquaSpot</string>
+    <string name="app_name">CheckCount</string>
     <string name="welcome_text">Krenimo Odmah</string>
     <string name="login_text">Prijavite se za nastavak</string>
     <string name="email_input_text">Email adresa</string>
@@ -9,7 +9,7 @@
     <string name="login_button">Prijavi se</string>
     <string name="credentials_error">Uneti podaci nisu ispravni</string>
     <string name="email_badly_formatted">Neispravan format email adrese</string>
-    <string name="register">Dobrodošli u AquaSpot</string>
+    <string name="register">Dobrodošli u CheckCount</string>
     <string name="register_text">Kreirajte nalog</string>
     <string name="username_text">Korisničko ime</string>
     <string name="full_name_text">Puno ime</string>
@@ -27,6 +27,6 @@
     <string name="search_text">Pretraži</string>
 
 
-    <string name="add_new_beach_heading">Dodaj novu plažu na ovoj lokaciji</string>
+    <string name="add_new_obj_heading">Dodaj novu plažu na ovoj lokaciji</string>
 
 </resources>

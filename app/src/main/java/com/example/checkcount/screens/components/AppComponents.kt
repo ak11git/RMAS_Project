@@ -1,4 +1,4 @@
-package com.example.checkcount.components
+package com.example.checkcount.screens.components
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -10,8 +10,6 @@ import android.graphics.RectF
 import android.graphics.Shader
 import android.net.Uri
 import android.util.Log
-import android.widget.ImageButton
-import android.widget.Space
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -20,23 +18,18 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.indication
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.defaultMinSize
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentWidth
@@ -45,27 +38,24 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.MailOutline
+import androidx.compose.material.icons.filled.AddAPhoto
+import androidx.compose.material.icons.filled.MyLocation
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
+import androidx.compose.material.icons.outlined.FormatListNumbered
 import androidx.compose.material.icons.outlined.Home
-import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material.icons.outlined.TableRows
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
-import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
@@ -75,20 +65,13 @@ import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalFocusManager
-import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -98,50 +81,27 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleEventObserver
 import androidx.navigation.NavController
-import coil.annotation.ExperimentalCoilApi
 import coil.compose.AsyncImage
-import coil.compose.rememberImagePainter
-import coil.request.ImageRequest
-import com.example.aquaspot.model.Obj
 import com.example.checkcount.R
-import com.example.checkcount.ui.theme.buttonDisabledColor
-import com.example.checkcount.ui.theme.greyTextColor
-import com.example.checkcount.ui.theme.lightMailColor
-import com.example.checkcount.ui.theme.lightRedColor
-import com.example.checkcount.ui.theme.mainColor
 import com.example.checkcount.methods.searchObjectsByDescription
+import com.example.checkcount.model.Obj
+import com.example.checkcount.navigation.Routes
 import com.example.checkcount.ui.theme.buttonDisabledColor
 import com.example.checkcount.ui.theme.greyTextColor
 import com.example.checkcount.ui.theme.lightRedColor
 import com.example.checkcount.ui.theme.mainColor
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.gson.Gson
 import com.google.maps.android.compose.CameraPositionState
-import com.google.maps.android.compose.GoogleMap
-import com.google.maps.android.compose.MapProperties
-import com.google.maps.android.compose.MapType
-import com.google.maps.android.compose.MapUiSettings
-import com.google.maps.android.compose.Marker
-import com.google.maps.android.compose.MarkerState
-import com.google.maps.android.compose.rememberCameraPositionState
-import com.google.protobuf.Empty
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 import java.net.URL
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
@@ -243,7 +203,7 @@ fun headingText(textValue: String){
 @Composable
 fun greyText(textValue: String){
     Text(style = TextStyle(
-        color = Color.Gray,
+        color = greyTextColor,
         fontSize = 12.sp,
         fontWeight = FontWeight.Medium
     ),
@@ -253,7 +213,7 @@ fun greyText(textValue: String){
 @Composable
 fun greyTextBigger(textValue: String){
     Text(style = TextStyle(
-        color = Color.Gray,
+        color = greyTextColor,
         fontSize = 14.sp,
         fontWeight = FontWeight.Medium
     ),
@@ -311,7 +271,7 @@ fun customTextInput(
                 Text(
                     text = inputText,
                     style = TextStyle(
-                        color = Color.Gray,
+                        color = greyTextColor,
                         fontWeight = FontWeight.Medium
                     )
                 )
@@ -379,7 +339,7 @@ fun customRichTextInput(
                 Text(
                     text = inputText,
                     style = TextStyle(
-                        color = Color.Gray,
+                        color = greyTextColor,
                         fontWeight = FontWeight.Medium
                     )
                 )
@@ -446,7 +406,7 @@ fun customPasswordInput(
                 Text(
                     text = inputText,
                     style = TextStyle(
-                        color = Color.Gray,
+                        color = greyTextColor,
                         fontWeight = FontWeight.Medium
                     )
                 )
@@ -722,14 +682,14 @@ fun mapNavigationBar(
                             .fillMaxWidth()
                             .heightIn(max = 300.dp)
                     ) {
-                        for (obj in searchList) {
+                        for (beach in searchList) {
                             item {
                                 Row(
                                     modifier = Modifier.fillMaxWidth()
                                         .clickable {
-                                            //val objJson = Gson().toJson(obj)
-                                            //val encodedObjJson = URLEncoder.encode(objJson, StandardCharsets.UTF_8.toString())
-                                            //navController?.navigate(Routes.beachScreen + "/$encodedObjJson")
+                                            val beachJson = Gson().toJson(beach)
+                                            val encodedBeachJson = URLEncoder.encode(beachJson, StandardCharsets.UTF_8.toString())
+                                            navController?.navigate(Routes.objScreen + "/$encodedBeachJson")
                                         },
                                     verticalAlignment = Alignment.CenterVertically,
                                     horizontalArrangement = Arrangement.SpaceBetween
@@ -737,11 +697,11 @@ fun mapNavigationBar(
                                     Row(
                                         modifier = Modifier
                                             .padding(vertical = 8.dp)
-                                            .weight(1f),  // Dodajte weight da osigurate da ovaj Row zauzima prostor proporcionalno
+                                            .weight(1f),
                                         verticalAlignment = Alignment.CenterVertically
                                     ) {
                                         AsyncImage(
-                                            model = obj.mainImage,
+                                            model = beach.mainImage,
                                             contentDescription = "",
                                             contentScale = ContentScale.Crop,
                                             modifier = Modifier
@@ -751,10 +711,10 @@ fun mapNavigationBar(
                                         )
                                         Spacer(modifier = Modifier.width(10.dp))
                                         Text(
-                                            text = if (obj.description.length > 26) {
-                                                obj.description.substring(0, 26) + "..."
+                                            text = if (beach.description.length > 26) {
+                                                beach.description.substring(0, 26) + "..."
                                             } else {
-                                                obj.description
+                                                beach.description
                                             }
                                         )
                                     }
@@ -763,9 +723,9 @@ fun mapNavigationBar(
                                         onClick = {
                                             isFocused.value = false
                                             keyboardController?.hide()
-                                            cameraPositionState.position = CameraPosition.fromLatLngZoom(LatLng(obj.location.latitude, obj.location.longitude), 17f)
+                                            cameraPositionState.position = CameraPosition.fromLatLngZoom(LatLng(beach.location.latitude, beach.location.longitude), 17f)
                                         },
-                                        modifier = Modifier  // Dodajte modifier da osigurate da IconButton zauzima minimum potreban prostor
+                                        modifier = Modifier
                                             .wrapContentWidth()
                                     ) {
                                         Icon(
@@ -1070,7 +1030,7 @@ fun CustomImageForNewObj(
 
 
 @Composable
-fun CustomGalleryForAddNewBeach(
+fun CustomGalleryForAddNewObj(
     selectedImages: MutableState<List<Uri>>
 ) {
     val pickImagesLauncher = rememberLauncherForActivityResult(

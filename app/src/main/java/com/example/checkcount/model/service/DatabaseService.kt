@@ -81,8 +81,8 @@ class DatabaseService(
         obj: Obj
     ): Resource<String>{
         return try{
-            firestore.collection("beaches").add(obj).await()
-            Resource.Success("Uspešno sačuvani podaci o plaži")
+            firestore.collection("objs").add(obj).await()
+            Resource.Success("Uspešno sačuvani podaci o objektu")
         }catch(e: Exception){
             e.printStackTrace()
             Resource.Failure(e)

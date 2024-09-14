@@ -1,15 +1,15 @@
-package com.example.checkcount.methods
+package com.example.checkcount.screens.filters
 
 import com.example.checkcount.model.Obj
 
-fun searchObjectsByDescription(
+fun searchBeachesByDescription(
     objs: MutableList<Obj>,
     query: String
 ):List<Obj>{
     val regex = query.split(" ").joinToString(".*"){
         Regex.escape(it)
     }.toRegex(RegexOption.IGNORE_CASE)
-    return objs.filter { objs ->
-        regex.containsMatchIn(objs.description)
+    return objs.filter { obj ->
+        regex.containsMatchIn(obj.description)
     }
 }
