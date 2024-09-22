@@ -113,7 +113,7 @@ Box(modifier = Modifier
     .padding(20.dp),
 
     contentAlignment = Alignment.Center){
-        Image(painter = painterResource(id = R.drawable.loginimage),
+        Image(painter = painterResource(id = R.drawable.checkcount_natpis),
             contentDescription = "Login Image",
             modifier = Modifier
                 .width(210.dp)
@@ -144,7 +144,7 @@ fun registerImage(
     ) {
         if (selectedImageUri.value == Uri.EMPTY) {
             Image(
-                painter = painterResource(id = R.drawable.profile),
+                painter = painterResource(id = R.drawable.upload),
                 contentDescription = "Profile Image",
                 modifier = Modifier
                     .size(140.dp)
@@ -191,13 +191,19 @@ fun registerImage(
 
 @Composable
 fun headingText(textValue: String){
-    Text(style = TextStyle(
-        color = Color.Black,
-        fontSize = 24.sp,
-        fontWeight = FontWeight.Bold
-        ),
-        text = textValue
-    )
+    Box(
+        modifier = Modifier.fillMaxWidth(),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text = textValue,
+            style = TextStyle(
+                color = Color.Black,
+                fontSize = 12.sp,
+                fontWeight = FontWeight.Bold
+            )
+        )
+    }
 }
 
 @Composable
@@ -462,10 +468,10 @@ fun loginRegisterCustomButton(
             .fillMaxWidth()
             .padding(vertical = 2.dp)
             .height(50.dp)
-            .shadow(6.dp, shape = RoundedCornerShape(20.dp)),
+            .shadow(6.dp, shape = RoundedCornerShape(13.dp)),
         colors = ButtonDefaults.buttonColors(
             containerColor = mainColor,
-            contentColor = Color.Black,
+            contentColor = Color.White,
             disabledContainerColor = buttonDisabledColor,
             disabledContentColor = Color.White
         ),
@@ -793,7 +799,7 @@ fun mapFooter(
         modifier = Modifier
             .fillMaxWidth()
             .height(100.dp)
-            .background(Color.Transparent)  // Set background color if necessary
+            .background(Color.Transparent)
     ) {
         Box(
             modifier = Modifier
@@ -822,7 +828,7 @@ fun mapFooter(
             ) {
                 IconButton(onClick = onHomeClick) {
                     Icon(
-                        imageVector = Icons.Outlined.Home,  // Replace with appropriate icon
+                        imageVector = Icons.Outlined.Home,
                         contentDescription = "",
                         tint = if(active == 0) mainColor else greyTextColor,
                         modifier = Modifier.size(35.dp)
@@ -858,13 +864,13 @@ fun mapFooter(
         Box(
             modifier = Modifier
                 .align(Alignment.Center)
-                .offset(y = (-30).dp)  // Negative offset to overlap the footer
-                .size(90.dp)  // Adjust size as needed
+                .offset(y = (-30).dp)
+                .size(90.dp)
         ) {
             IconButton(onClick = openAddNewObj,
                 modifier = Modifier.fillMaxSize()) {
                 Image(
-                    painter = painterResource(id = R.drawable.searchcomponent),
+                    painter = painterResource(id = R.drawable.marker),
                     contentDescription = "",
                     modifier = Modifier.fillMaxSize()
                 )
@@ -1000,7 +1006,7 @@ fun CustomImageForNewObj(
                     }
             ) {
                 Icon(
-                    painter = painterResource(id = R.drawable.uploadimage),
+                    painter = painterResource(id = R.drawable.upload),
                     contentDescription = ""
                 )
                 Text(text = "Dodaj naslovnu sliku")

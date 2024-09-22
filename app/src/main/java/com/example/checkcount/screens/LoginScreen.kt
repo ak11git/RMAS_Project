@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.checkcount.R
@@ -67,13 +68,9 @@ fun LoginScreen(
     ) {
         loginImage()
         headingText(textValue = stringResource(id = R.string.welcome_text))
-        Spacer(modifier = Modifier.height(5.dp))
-        greyText(textValue = stringResource(id = R.string.login_text))
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(25.dp))
         if (isError.value) customAuthError(errorText = errorText.value)
         Spacer(modifier = Modifier.height(20.dp))
-        inputTextIndicator(textValue = stringResource(id = R.string.email_input_text))
-        Spacer(modifier = Modifier.height(10.dp))
         customTextInput(
             isEmail = true,
             inputValue = email,
@@ -82,8 +79,6 @@ fun LoginScreen(
             isError = isEmailError,
             errorText = emailErrorText
         )
-        Spacer(modifier = Modifier.height(10.dp))
-        inputTextIndicator(textValue = stringResource(id = R.string.password_input_text))
         Spacer(modifier = Modifier.height(10.dp))
         customPasswordInput(
             inputValue = password,
@@ -106,7 +101,7 @@ fun LoginScreen(
             }
         )
         Spacer(modifier = Modifier.height(10.dp))
-        customClickableText(firstText = "Još uvek nemate nalog? ", secondText = "Registruj se", onClick = {
+        customClickableText(firstText = "Don't have an account? ", secondText = "Sign up", onClick = {
             navController.navigate(Routes.registerScreen)
         })
     }

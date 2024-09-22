@@ -13,13 +13,13 @@ val Pink40 = Color(0xFF7D5260)
 val Primary = Color(0xFF92A3FD)
 val Secondary = Color(0xFF9DCEFF)
 
-val mainColor = Color(0xFF79EA99)
-val lightMailColor = Color(0xFF79EA99)
-val lightMainColor2 = Color(0xFFd0f7db)
+val mainColor = Color(0xFFB31515)
+val lightMailColor = Color(0xFFD83333)
+val lightMainColor2 = Color(0xFFFC4040)
 val lightRedColor = Color(0xFFFEBFBF)
 
-val buttonDisabledColor = Color(0xFFC5F0D1)
+val buttonDisabledColor = Color(0xFFE09898)
 
-val redTextColor = Color(0xFFF36060)
+val redTextColor = Color(0xFFC75D5D)
 var greyTextColor = Color(0xFFC1C1C1)
 val lightGreyColor = Color(0xFFf2f2f2)

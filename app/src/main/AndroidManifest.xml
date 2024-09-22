@@ -5,6 +5,13 @@
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="28" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:allowBackup="true"
@@ -17,9 +24,14 @@
         android:theme="@style/Theme.CheckCount"
         tools:targetApi="31">
 
+        <service
+            android:name=".location.LocationService"
+            android:foregroundServiceType="location"
+            android:exported="false"/>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyABuJvhs844RapQWnw3A0CliA9S0KRPBqM" />
+            android:value="AIzaSyBB5QU-QhBIx289Yqo-9COhhbPFX_AQtGA" />
 
         <activity
             android:name=".MainActivity"

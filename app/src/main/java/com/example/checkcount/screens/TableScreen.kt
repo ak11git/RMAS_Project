@@ -76,7 +76,7 @@ fun TableScreen(
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = "Pregled plaža",
+                    text = "Pregled objekata",
                     modifier = Modifier.fillMaxWidth(),
                     style= TextStyle(
                         fontSize = 22.sp,
@@ -104,7 +104,7 @@ fun TableScreen(
                             modifier = Modifier.size(150.dp)
                         )
                         Spacer(modifier = Modifier.height(20.dp))
-                        Text(text = "Nije pronađena nijedna plaža")
+                        Text(text = "Nije pronađen nijedan objekat")
                     }
                 }
             }else {

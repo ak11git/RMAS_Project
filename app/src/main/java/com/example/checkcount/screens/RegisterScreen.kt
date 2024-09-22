@@ -93,13 +93,9 @@ fun RegisterScreen(
             //Test
             Spacer(modifier = Modifier.height(20.dp))
             headingText(textValue = stringResource(id = R.string.register))
-            Spacer(modifier = Modifier.height(5.dp))
-            greyText(textValue = stringResource(id = R.string.register_text))
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(25.dp))
             if (isError.value) customAuthError(errorText = errorText.value)
             Spacer(modifier = Modifier.height(20.dp))
-            inputTextIndicator(textValue = stringResource(id = R.string.email_input_text))
-            Spacer(modifier = Modifier.height(10.dp))
             customTextInput(
                 isEmail = false,
                 inputValue = email,
@@ -108,8 +104,6 @@ fun RegisterScreen(
                 isError = isEmailError,
                 errorText = emailErrorText
             )
-            Spacer(modifier = Modifier.height(10.dp))
-            inputTextIndicator(textValue = stringResource(id = R.string.full_name_text))
             Spacer(modifier = Modifier.height(10.dp))
             customTextInput(
                 isEmail = false,
@@ -120,8 +114,6 @@ fun RegisterScreen(
                 errorText = emailErrorText
             )
             Spacer(modifier = Modifier.height(10.dp))
-            inputTextIndicator(textValue = stringResource(id = R.string.phone_number_text))
-            Spacer(modifier = Modifier.height(10.dp))
             customTextInput(
                 isEmail = false,
                 isNumber = true,
@@ -131,8 +123,6 @@ fun RegisterScreen(
                 isError = isPhoneNumberError,
                 errorText = emailErrorText
             )
-            Spacer(modifier = Modifier.height(10.dp))
-            inputTextIndicator(textValue = stringResource(id = R.string.password_input_text))
             Spacer(modifier = Modifier.height(10.dp))
             customPasswordInput(
                 inputValue = password,
@@ -151,7 +141,7 @@ fun RegisterScreen(
                 .padding(20.dp)
         ) {
             loginRegisterCustomButton(
-                buttonText = stringResource(id = R.string.register_text),
+                buttonText = stringResource(id = R.string.register_button),
                 isEnabled = buttonIsEnabled,
                 isLoading = isLoading,
                 onClick = {
@@ -248,6 +238,7 @@ fun RegisterScreen(
                 }
             }
             null -> Log.d("Test", "Test")
+            else -> {}
         }
     }
 }
@@ -257,45 +248,3 @@ fun RegisterScreen(
 fun showRegisterScreen(){
     RegisterScreen(viewModel = null, navController = null)
 }
-
-//    loginFlow?.value.let {
-//        when (it) {
-//            is Resource.Failure -> {
-//                isLoading.value = false
-//                Log.d("Error", it.exception.message.toString())
-//                val context = LocalContext.current
-//                Toast.makeText(context, it.exception.message, Toast.LENGTH_LONG).show()
-//
-//                when (it.exception.message.toString()) {
-//                    AuthExceptionsMessages.emptyFields -> {
-//                        isEmailError.value = true
-//                        isPasswordError.value = true
-//                    }
-//                    AuthExceptionsMessages.badlyEmailFormat -> {
-//                        isEmailError.value = true
-//                        emailErrorText.value = stringResource(id = R.string.email_badly_formatted)
-//                    }
-//                    AuthExceptionsMessages.invalidCredential -> {
-//                        isError.value = true
-//                        errorText.value = stringResource(id = R.string.credentials_error)
-//                    }
-//                    else -> {}
-//                }
-//            }
-//            is Resource.loading -> {
-//                // Do nothing, as isLoading is already set in onClick
-//            }
-//            is Resource.Success -> {
-//                isLoading.value = false
-//                LaunchedEffect(Unit) {
-//                    navController?.navigate(Routes.indexScreen) {
-//                        popUpTo(Routes.indexScreen) {
-//                            inclusive = true
-//                        }
-//                    }
-//                }
-//            }
-//            null -> Log.d("Test", "Test")
-//        }
-//    }
-//}
