@@ -95,7 +95,7 @@ fun IndexScreen(
         mutableStateOf(false)
     },
     cameraPositionState: CameraPositionState = rememberCameraPositionState {
-        position = CameraPosition.fromLatLngZoom(LatLng(43.321445, 21.896104), 17f)
+        position = CameraPosition.fromLatLngZoom(LatLng(44.7866, 20.4489), 17f)
     },
     objMarkers: MutableList<Obj>,
     isFilteredParam: Boolean = false
@@ -193,10 +193,12 @@ fun IndexScreen(
         }
     }
 
-    val uiSettings = remember { mutableStateOf(MapUiSettings()) }
+    val uiSettings = remember {
+        mutableStateOf(MapUiSettings(compassEnabled = true))
+    }
 
     val properties = remember {
-        mutableStateOf(MapProperties(mapType = MapType.TERRAIN))
+        mutableStateOf(MapProperties(isMyLocationEnabled = true))
     }
 
     val markers = remember { mutableStateListOf<LatLng>() }
@@ -241,7 +243,7 @@ fun IndexScreen(
                     )
                     Marker(
                         state = rememberMarkerState(position = marker),
-                        title = "Moja Lokacija",
+                        title = "My location",
                         icon = icon,
                         snippet = "",
                     )
@@ -265,14 +267,14 @@ fun IndexScreen(
                             icon = icon.value ?: BitmapDescriptorFactory.defaultMarker(),
                             snippet = marker.description,
                             onClick = {
-                                val beachJson = Gson().toJson(marker)
-                                val encodedBeachJson =
-                                    URLEncoder.encode(beachJson, StandardCharsets.UTF_8.toString())
+                                val objJson = Gson().toJson(marker)
+                                val encodedObjJson =
+                                    URLEncoder.encode(objJson, StandardCharsets.UTF_8.toString())
 
-                                val beachesJson = Gson().toJson(objMarkers)
-                                val encodedBeachesJson = URLEncoder.encode(beachesJson, StandardCharsets.UTF_8.toString())
+                                val objsJson = Gson().toJson(objMarkers)
+                                val encodedObjsJson = URLEncoder.encode(objsJson, StandardCharsets.UTF_8.toString())
 
-                                navController?.navigate(Routes.objScreen + "/$encodedBeachJson/$encodedBeachesJson")
+                                navController?.navigate(Routes.objScreen + "/$encodedObjJson/$encodedObjsJson")
                                 true
                             }
                         )
@@ -296,14 +298,14 @@ fun IndexScreen(
                             icon = icon.value ?: BitmapDescriptorFactory.defaultMarker(),
                             snippet = marker.description,
                             onClick = {
-                                val beachJson = Gson().toJson(marker)
-                                val encodedBeachJson =
-                                    URLEncoder.encode(beachJson, StandardCharsets.UTF_8.toString())
+                                val objJson = Gson().toJson(marker)
+                                val encodedObjJson =
+                                    URLEncoder.encode(objJson, StandardCharsets.UTF_8.toString())
 
-                                val beachesJson = Gson().toJson(filteredObjs)
-                                val encodedBeachesJson = URLEncoder.encode(beachesJson, StandardCharsets.UTF_8.toString())
+                                val objsJson = Gson().toJson(filteredObjs)
+                                val encodedObjsJson = URLEncoder.encode(objsJson, StandardCharsets.UTF_8.toString())
 
-                                navController?.navigate(Routes.objScreen + "/$encodedBeachJson/$encodedBeachesJson")
+                                navController?.navigate(Routes.objScreen + "/$encodedObjJson/$encodedObjsJson")
                                 true
                             }
                         )
@@ -443,14 +445,14 @@ fun IndexScreen(
                     onHomeClick = {},
                     onTableClick = {
 //                        navController?.navigate(Routes.tableScreen)
-                        val beachesJson = Gson().toJson(
+                        val objsJson = Gson().toJson(
                             if(!isFiltered.value)
                                 objMarkers
                             else
                                 filteredObjs
                         )
-                        val encodedBeachesJson = URLEncoder.encode(beachesJson, StandardCharsets.UTF_8.toString())
-                        navController?.navigate("tableScreen/$encodedBeachesJson")
+                        val encodedObjsJson = URLEncoder.encode(objsJson, StandardCharsets.UTF_8.toString())
+                        navController?.navigate("tableScreen/$encodedObjsJson")
                     },
                     onRankingClick = {
                         navController?.navigate(Routes.rankingScreen)

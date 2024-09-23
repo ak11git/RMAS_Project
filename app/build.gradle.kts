@@ -41,6 +41,7 @@ android {
     }
     buildFeatures {
         compose = true
+        viewBinding = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -55,6 +56,7 @@ android {
 dependencies {
     implementation(libs.firebase.firestore)
     implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.constraintlayout)
     val nav_version = "2.7.7"
     implementation("androidx.navigation:navigation-compose:$nav_version")
     implementation("androidx.compose.material:material-icons-extended:1.0.0-alpha08")

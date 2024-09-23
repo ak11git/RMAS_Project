@@ -91,8 +91,8 @@ fun ObjScreen(
                     val longitude = obj.location.longitude
 
                     val objsJson = Gson().toJson(objs)
-                    val encodedBeachesJson = URLEncoder.encode(objsJson, StandardCharsets.UTF_8.toString())
-                    navController.navigate(Routes.indexScreenWithParams + "/$isCameraSet/$latitude/$longitude/$encodedBeachesJson")
+                    val encodedObjsJson = URLEncoder.encode(objsJson, StandardCharsets.UTF_8.toString())
+                    navController.navigate(Routes.indexScreenWithParams + "/$isCameraSet/$latitude/$longitude/$encodedObjsJson")
                 }
             }
             }

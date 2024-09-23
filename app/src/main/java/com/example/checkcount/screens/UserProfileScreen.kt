@@ -101,7 +101,7 @@ fun UserProfileScreen(
                         .background(Color.White)
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.beachwallpaper),
+                        painter = painterResource(id = R.drawable.wallpaper2),
                         contentDescription = null,
                         modifier = Modifier
                             .fillMaxWidth()

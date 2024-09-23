@@ -228,7 +228,7 @@ fun FiltersBottomSheet(
 
         Spacer(modifier = Modifier.height(16.dp))
         Text(
-            text = "Gužva",
+            text = "Trenutna posecenost",
             style = TextStyle(
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold

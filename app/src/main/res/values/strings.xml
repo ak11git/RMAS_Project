@@ -22,5 +22,6 @@
 
 
     <string name="add_new_obj_heading">Dodaj novi objekat na ovoj lokaciji</string>
+    <string name="title_activity_maps">MapsActivity</string>
 
 </resources>

@@ -1,6 +1,7 @@
 package com.example.checkcount.model.service
 
 import android.net.Uri
+import android.util.Log
 import com.example.checkcount.utils.await
 import com.google.firebase.storage.FirebaseStorage
 
@@ -12,7 +13,8 @@ class StorageService(
         image: Uri
     ): String{
         return try{
-            val storageRef = storage.reference.child("profile_picture/$uid.jpg")
+            Log.d("Upload", "Image URI: $image")
+            val storageRef = storage.reference.child("$uid.png")
             val uploadTask = storageRef.putFile(image).await()
             val downloadUrl = uploadTask.storage.downloadUrl.await()
             downloadUrl.toString()
