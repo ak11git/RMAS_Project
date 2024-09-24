@@ -17,11 +17,11 @@
     <string name="email_used">Postoji nalog sa ovom adresom</string>
     <string name="short_password">Lozinka mora imati najmanje 6 karaktera</string>
 
-    <string name="notification_chanel_name">Notifikacija</string>
-    <string name="search_text">Pretraži</string>
+    <string name="notification_chanel_name">Notification</string>
+    <string name="search_text">Search</string>
 
 
-    <string name="add_new_obj_heading">Dodaj novi objekat na ovoj lokaciji</string>
+    <string name="add_new_obj_heading">Add new club/hotel/caffe</string>
     <string name="title_activity_maps">MapsActivity</string>
 
 </resources>

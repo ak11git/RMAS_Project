@@ -76,7 +76,7 @@ fun TableScreen(
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = "Pregled objekata",
+                    text = "Club/Hotel/Caffe view",
                     modifier = Modifier.fillMaxWidth(),
                     style= TextStyle(
                         fontSize = 22.sp,
@@ -99,12 +99,12 @@ fun TableScreen(
                         verticalArrangement = Arrangement.Center
                     ) {
                         Image(
-                            painter = painterResource(id = R.drawable.not_found),
+                            painter = painterResource(id = R.drawable.not_found_item),
                             contentDescription = "",
                             modifier = Modifier.size(150.dp)
                         )
                         Spacer(modifier = Modifier.height(20.dp))
-                        Text(text = "Nije pronađen nijedan objekat")
+                        Text(text = "No objects were found")
                     }
                 }
             }else {

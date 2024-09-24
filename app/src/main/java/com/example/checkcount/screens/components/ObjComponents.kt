@@ -118,13 +118,13 @@ fun CustomCrowdIndicator(
                 Icon(
                     imageVector = Icons.Filled.People,
                     contentDescription = "",
-                    tint = Color.Black
+                    tint = Color.White
                 )
                 Spacer(modifier = Modifier.width(5.dp))
                 inputTextIndicator(textValue =
-                if(crowd == 0) "Slaba gužva"
-                else if(crowd == 1) "Umerena gužva"
-                else "Velika gužva"
+                if(crowd == 0) "Low"
+                else if(crowd == 1) "Medium"
+                else "High"
                 )
             }
         }
@@ -176,14 +176,14 @@ fun CustomRateButton(
         enabled = enabled,
         colors = ButtonDefaults.buttonColors(
             containerColor = mainColor,
-            contentColor = Color.Black,
+            contentColor = Color.White,
             disabledContainerColor = buttonDisabledColor,
             disabledContentColor = Color.White
         ),
         
     ) {
         Text(
-            "Oceni plažu",
+            "Rate this club/hotel/caffe",
             style = TextStyle(
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold

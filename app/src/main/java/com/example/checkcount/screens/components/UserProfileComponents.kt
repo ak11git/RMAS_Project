@@ -72,7 +72,7 @@ fun PhotosSection(
     Column(
         modifier = Modifier.padding(horizontal = 16.dp)
     ) {
-        Text(text = "Dodati objekti", style = MaterialTheme.typography.h6)
+        Text(text = "Added objects", style = MaterialTheme.typography.h6)
         Spacer(modifier = Modifier.height(8.dp))
 
         LazyRow(
@@ -98,11 +98,11 @@ fun PhotosSection(
                                 )
                                 .clickable {
                                     val objJson = Gson().toJson(obj)
-                                    val encodedBeachJson = URLEncoder.encode(
+                                    val encodedObjJson = URLEncoder.encode(
                                         objJson,
                                         StandardCharsets.UTF_8.toString()
                                     )
-                                    navController.navigate(Routes.objScreen + "/$encodedBeachJson")
+                                    navController.navigate(Routes.objScreen + "/$encodedObjJson")
                                 }
                         )
                     }
@@ -157,7 +157,7 @@ fun LogoutButton(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    "Odjavi se",
+                    "Log out",
                     style = TextStyle(
                         fontSize = 18.sp,
                         fontWeight = FontWeight.Bold

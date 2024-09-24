@@ -78,19 +78,19 @@ fun AddNewObjBottomSheet(
         item{Spacer(modifier = Modifier.height(20.dp))}
         item{CustomImageForNewObj(selectedImageUri = selectedImage) }
         item{Spacer(modifier = Modifier.height(20.dp))}
-        item{inputTextIndicator(textValue = "Opis")}
+        item{inputTextIndicator(textValue = "Description")}
         item{Spacer(modifier = Modifier.height(5.dp))}
-        item{customRichTextInput(inputValue = inputDescription, inputText = "Unesite opis", isError = isDescriptionError, errorText = descriptionError)}
+        item{customRichTextInput(inputValue = inputDescription, inputText = "Enter a description", isError = isDescriptionError, errorText = descriptionError)}
         item{Spacer(modifier = Modifier.height(20.dp))}
-        item{inputTextIndicator(textValue = "Gužva")}
+        item{inputTextIndicator(textValue = "Crowd")}
         item{Spacer(modifier = Modifier.height(5.dp))}
         item{CustomCrowd(selectedOption)}
         item{Spacer(modifier = Modifier.height(20.dp))}
-        item{inputTextIndicator(textValue = "Galerija")}
+        item{inputTextIndicator(textValue = "Gallery")}
         item{Spacer(modifier = Modifier.height(5.dp))}
         item{CustomGalleryForAddNewObj(selectedImages = selectedGallery) }
         item{Spacer(modifier = Modifier.height(20.dp))}
-        item{loginRegisterCustomButton(buttonText = "Dodaj objekat", isEnabled = buttonIsEnabled, isLoading = buttonIsLoading) {
+        item{loginRegisterCustomButton(buttonText = "Add object", isEnabled = buttonIsEnabled, isLoading = buttonIsLoading) {
             showedAlert.value = false;
             buttonIsLoading.value = true
             objViewModel?.saveObjData(

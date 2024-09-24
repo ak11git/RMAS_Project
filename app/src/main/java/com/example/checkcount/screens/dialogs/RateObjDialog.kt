@@ -69,9 +69,8 @@ fun RateObjDialog(
                     Column(
                         modifier = Modifier.fillMaxWidth()
                     ) {
-//                        Image(painter = painterResource(id = R.drawable.cutestar), contentDescription = "")
                         Text(
-                            text = "Kako biste ocenili ovu plažu?",
+                            text = "How would you rate this property?",
                             style = TextStyle(
                                 fontSize = 24.sp,
                                 textAlign = TextAlign.Center,
@@ -113,7 +112,7 @@ fun RateObjDialog(
                                 .height(50.dp),
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = mainColor,
-                                contentColor = Color.Black,
+                                contentColor = Color.White,
                                 disabledContainerColor = buttonDisabledColor,
                                 disabledContentColor = Color.White,
                             ),
@@ -126,7 +125,7 @@ fun RateObjDialog(
                                 )
                             } else {
                                 Text(
-                                    text = "Potvrdi",
+                                    text = "Confirm",
                                     style = TextStyle(
                                         fontSize = 18.sp,
                                         fontWeight = FontWeight.Bold
@@ -136,7 +135,7 @@ fun RateObjDialog(
                         }
                         Spacer(modifier = Modifier.height(15.dp))
                         Text(
-                            text = "Zatvori",
+                            text = "Close",
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .clickable(

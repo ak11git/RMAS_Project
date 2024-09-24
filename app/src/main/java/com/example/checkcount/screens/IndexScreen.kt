@@ -236,7 +236,7 @@ fun IndexScreen(
                 cameraPositionState = cameraPositionState,
                 properties = properties.value,
                 uiSettings = uiSettings.value
-            ) {
+            ){
                 markers.forEach { marker ->
                     val icon = bitmapDescriptorFromVector(
                         context, R.drawable.currentlocation
@@ -248,7 +248,7 @@ fun IndexScreen(
                         snippet = "",
                     )
                 }
-                Log.d("Is Filtered", isFiltered.value.toString())
+                //Log.d("Is Filtered", isFiltered.value.toString())
                 if(!isFiltered.value) {
                     objMarkers.forEach { marker ->
                         val icon = bitmapDescriptorFromUrlWithRoundedCorners(
@@ -346,7 +346,7 @@ fun IndexScreen(
                                 mainColor
                             else
                                 Color.White
-                            ,RoundedCornerShape(30.dp)
+                            ,RoundedCornerShape(15.dp)
                         )
                         .padding(horizontal = 15.dp, vertical = 7.dp)
                 ) {
@@ -364,7 +364,7 @@ fun IndexScreen(
                         )
                         Spacer(modifier = Modifier.width(5.dp))
                         Text(
-                            text = "Filteri",
+                            text = "Filters",
                             style = TextStyle(
                                 color = if(isFiltered.value || isFilteredIndicator.value)
                                     Color.White
@@ -384,7 +384,7 @@ fun IndexScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(16.dp),
-                    horizontalAlignment = Alignment.End
+                    horizontalAlignment = Alignment.Start
                 ) {
                     IconButton(
                         onClick = {
@@ -396,7 +396,7 @@ fun IndexScreen(
                                     mainColor
                                 else
                                     Color.White
-                                ,RoundedCornerShape(30.dp)
+                                ,RoundedCornerShape(15.dp)
                             )
                     ) {
                         Icon(
@@ -420,7 +420,7 @@ fun IndexScreen(
                                     mainColor
                                 else
                                     Color.White
-                                ,RoundedCornerShape(30.dp)
+                                ,RoundedCornerShape(15.dp)
                             )
                     ) {
                         Icon(

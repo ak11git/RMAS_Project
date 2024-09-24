@@ -164,7 +164,7 @@ fun FiltersBottomSheet(
             .padding(vertical = 40.dp, horizontal = 16.dp)
     ) {
         Text(
-            text = "Autor",
+            text = "The author",
             style = TextStyle(
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold
@@ -183,7 +183,7 @@ fun FiltersBottomSheet(
                     .background(lightGreyColor, RoundedCornerShape(4.dp))
                     .padding(horizontal = 20.dp, vertical = 14.dp)
             ) {
-                Text("Izaberi autore", style = MaterialTheme.typography.body1)
+                Text("Select authors", style = MaterialTheme.typography.body1)
                 Icon(
                     if (expanded.value) Icons.Default.ArrowDropUp else Icons.Default.ArrowDropDown,
                     contentDescription = "Dropdown icon"
@@ -228,7 +228,7 @@ fun FiltersBottomSheet(
 
         Spacer(modifier = Modifier.height(16.dp))
         Text(
-            text = "Trenutna posecenost",
+            text = "Current attendance",
             style = TextStyle(
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold
@@ -243,7 +243,7 @@ fun FiltersBottomSheet(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                text = "Distanca",
+                text = "Distance",
                 style = TextStyle(
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold
@@ -254,7 +254,7 @@ fun FiltersBottomSheet(
                     if(rangeValues.floatValue != 1000f)
                         rangeValues.floatValue.toBigDecimal().setScale(1, RoundingMode.UP).toString() + "m"
                     else
-                        "Neograničeno"
+                        "Unlimited"
                 ,style = TextStyle(
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold
@@ -421,9 +421,9 @@ fun CustomCrowdSelector(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        CrowdOption("Slaba", 0, selected)
-        CrowdOption("Umerena", 1, selected)
-        CrowdOption("Velika", 2, selected)
+        CrowdOption("Low", 0, selected)
+        CrowdOption("Medium", 1, selected)
+        CrowdOption("High", 2, selected)
     }
 }
 
@@ -496,14 +496,14 @@ fun CustomFilterButton(
             .background(mainColor, RoundedCornerShape(30.dp)),
         colors = ButtonDefaults.buttonColors(
             containerColor = mainColor,
-            contentColor = Color.Black,
+            contentColor = Color.White,
             disabledContainerColor = buttonDisabledColor,
             disabledContentColor = Color.White
         ),
 
         ) {
         Text(
-            "Filtriraj",
+            "Filter",
             style = TextStyle(
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold
@@ -531,7 +531,7 @@ fun CustomResetFilters(
 
         ) {
         Text(
-            "Resetuj Filtere",
+            "Reset Filters",
             style = TextStyle(
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,

@@ -64,20 +64,20 @@ fun CustomTable(
                     .background(greyTextColor)
             )
 
-            objs?.forEachIndexed { index, beach ->
-                CustomTableRow(type = index%2, beach, openObjScreen = {
-                    val objJson = Gson().toJson(beach)
-                    val encodedBeachJson = URLEncoder.encode(objJson, StandardCharsets.UTF_8.toString())
-                    navController.navigate(Routes.objScreen + "/$encodedBeachJson")
+            objs?.forEachIndexed { index, obj ->
+                CustomTableRow(type = index%2, obj, openObjScreen = {
+                    val objJson = Gson().toJson(obj)
+                    val encodedObjJson = URLEncoder.encode(objJson, StandardCharsets.UTF_8.toString())
+                    navController.navigate(Routes.objScreen + "/$encodedObjJson")
                 },
                     openObjLocation = {
                         val isCameraSet = true
-                        val latitude = beach.location.latitude
-                        val longitude = beach.location.longitude
+                        val latitude = obj.location.latitude
+                        val longitude = obj.location.longitude
 
                         val objsJson = Gson().toJson(objs)
-                        val encodedBeachesJson = URLEncoder.encode(objsJson, StandardCharsets.UTF_8.toString())
-                        navController.navigate(Routes.indexScreenWithParams + "/$isCameraSet/$latitude/$longitude/$encodedBeachesJson")
+                        val encodedObjsJson = URLEncoder.encode(objsJson, StandardCharsets.UTF_8.toString())
+                        navController.navigate(Routes.indexScreenWithParams + "/$isCameraSet/$latitude/$longitude/$encodedObjsJson")
                     }
 
                 )
@@ -96,25 +96,25 @@ fun CustomTableHeader() {
     ) {
         Box(modifier = Modifier.width(60.dp))
 
-        Box(modifier = boxModifier.width(200.dp)) {
+        Box(modifier = boxModifier.width(170.dp)) {
             Text(
-                text = "Opis",
+                text = "Description",
                 style = TextStyle(
                     fontSize = 20.sp
                 )
             )
         }
 
-        Box(modifier = boxModifier.width(120.dp)) {
+        Box(modifier = boxModifier.width(150.dp)) {
             Text(
-                text = "Gužva",
+                text = "Crowd",
                 style = TextStyle(
                     fontSize = 20.sp
                 )
             )
         }
 
-        Box(modifier = boxModifier.width(50.dp)) {}
+        Box(modifier = boxModifier.width(60.dp)) {}
     }
 }
 
@@ -147,7 +147,7 @@ fun CustomTableRow(
         }
 
 
-        Box(modifier = boxModifier.width(200.dp)) {
+        Box(modifier = boxModifier.width(170.dp)) {
             Text(
                 text = if(obj.description.length > 20) obj.description.substring(0, 20).replace('+', ' ') + "..." else obj.description.replace('+', ' '),
                 style = TextStyle(
@@ -156,7 +156,7 @@ fun CustomTableRow(
             )
         }
 
-        Box(modifier = boxModifier.width(120.dp)) {
+        Box(modifier = boxModifier.width(150.dp)) {
             CustomCrowdIndicator(crowd = obj.crowd)
         }
         Box(modifier = boxModifier.width(50.dp)) {

@@ -5,6 +5,8 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -16,6 +18,7 @@ import com.example.checkcount.navigation.Router
 import com.example.checkcount.viewModels.AuthViewModel
 import com.example.checkcount.viewModels.ObjViewModel
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun PostApp(
     viewModel: AuthViewModel,

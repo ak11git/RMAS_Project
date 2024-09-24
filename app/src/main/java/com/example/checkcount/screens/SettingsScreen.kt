@@ -85,7 +85,8 @@ fun SettingScreen(
                 .height(200.dp),
             ) {
                 Text(
-                    text = "CheckCount Podešavanja",
+                    text = "CheckCount Settings",
+                    color = Color.White,
                     modifier = Modifier
                         .fillMaxWidth()
                         .offset(y = (60).dp) ,
@@ -119,7 +120,7 @@ fun SettingScreen(
                         .padding(vertical = 20.dp, horizontal = 16.dp)
                 ){
                     Text(
-                        text = "SERVISI",
+                        text = "SERVICES",
                         style = TextStyle(
                             fontWeight = FontWeight.Bold,
                             color = Color.DarkGray,
@@ -139,7 +140,7 @@ fun SettingScreen(
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         Text(
-                            text = "Najbliži objekat",
+                            text = "The nearest facility",
                             style = TextStyle(
                                 fontSize = 16.sp
                             )

@@ -73,7 +73,7 @@ class LocationService : Service() {
         locationClient.getLocationUpdates(1000L)
             .catch { e -> e.printStackTrace() }
             .onEach { location ->
-                Log.d("Lokacija", "${location.latitude} ${location.longitude}")
+                //Log.d("Lokacija", "${location.latitude} ${location.longitude}")
                 val intent = Intent(ACTION_LOCATION_UPDATE).apply {
                     putExtra(EXTRA_LOCATION_LATITUDE, location.latitude)
                     putExtra(EXTRA_LOCATION_LONGITUDE, location.longitude)
@@ -177,8 +177,8 @@ class LocationService : Service() {
         )
 
         val notification = NotificationCompat.Builder(this, notificationChannelId)
-            .setContentTitle("Plaza u blizini")
-            .setContentText("Nalazite se u blizini neke plaže!")
+            .setContentTitle("Objekat u blizini")
+            .setContentText("Nalazite se u blizini nekog objekta!")
             .setSmallIcon(R.drawable.logo)
             .setContentIntent(pendingIntent)
             .build()

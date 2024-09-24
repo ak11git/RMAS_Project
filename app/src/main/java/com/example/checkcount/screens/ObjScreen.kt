@@ -99,7 +99,7 @@ fun ObjScreen(
             item{Spacer(modifier = Modifier.height(220.dp))}
             item{ CustomCrowdIndicator(crowd = obj.crowd) }
             item{Spacer(modifier = Modifier.height(20.dp))}
-            item{headingText(textValue = "Objekat u blizini") }
+            item{headingText(textValue = "Facility nearby") }
             item{Spacer(modifier = Modifier.height(10.dp))}
             item{ CustomObjLocation(location = LatLng(obj.location.latitude, obj.location.longitude)) }
             item{Spacer(modifier = Modifier.height(10.dp))}
@@ -107,7 +107,7 @@ fun ObjScreen(
             item{Spacer(modifier = Modifier.height(10.dp))}
             item{greyTextBigger(textValue = obj.description.replace('+', ' ')) }
             item{Spacer(modifier = Modifier.height(20.dp))}
-            item{Text(text = "Galerija objekta", style= TextStyle(fontSize = 20.sp))};
+            item{Text(text = "Gallery of the object", style= TextStyle(fontSize = 20.sp))};
 //            item{ CustomCrowdIndicator(crowd = 1)}
             item{Spacer(modifier = Modifier.height(10.dp))}
             item { CustomObjGallery(images = obj.galleryImages) }
@@ -199,7 +199,7 @@ fun ObjScreen(
             }
             is Resource.Failure -> {
                 val context = LocalContext.current
-                Toast.makeText(context, "Došlo je do greške prilikom ocenjivanja objekta", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "An error occurred while evaluating the object", Toast.LENGTH_LONG).show()
                 isLoading.value = false
             }
             null -> {

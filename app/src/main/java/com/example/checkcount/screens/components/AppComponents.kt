@@ -154,7 +154,7 @@ fun registerImage(
                             Color.Transparent
                         )
                     )
-                    .clip(RoundedCornerShape(70.dp)) // 50% border radius
+                    .clip(RoundedCornerShape(70.dp))
                     .clickable(
                         interactionSource = interactionSource,
                         indication = null
@@ -171,7 +171,7 @@ fun registerImage(
                     contentDescription = null,
                     modifier = Modifier
                         .size(140.dp)
-                        .clip(RoundedCornerShape(70.dp)) // 50% border radius
+                        .clip(RoundedCornerShape(70.dp))
                         .background(Color.LightGray)
                         .clickable(
                             interactionSource = interactionSource,
@@ -870,7 +870,7 @@ fun mapFooter(
             IconButton(onClick = openAddNewObj,
                 modifier = Modifier.fillMaxSize()) {
                 Image(
-                    painter = painterResource(id = R.drawable.marker),
+                    painter = painterResource(id = R.drawable.marker_1),
                     contentDescription = "",
                     modifier = Modifier.fillMaxSize()
                 )
@@ -921,7 +921,7 @@ fun CustomCrowd(
                     },
                 contentAlignment = Alignment.Center
             ) {
-                Text(text = "Slabo")
+                Text(text = "Low")
             }
         }
         Row(modifier = Modifier
@@ -938,7 +938,7 @@ fun CustomCrowd(
                     },
                 contentAlignment = Alignment.Center
             ) {
-                Text(text = "Srednje")
+                Text(text = "Medium")
             }
         }
         Row(modifier = Modifier
@@ -955,7 +955,7 @@ fun CustomCrowd(
                     },
                 contentAlignment = Alignment.Center
             ) {
-                Text(text = "Mnogo")
+                Text(text = "High")
             }
         }
     }
@@ -1009,7 +1009,7 @@ fun CustomImageForNewObj(
                     painter = painterResource(id = R.drawable.upload),
                     contentDescription = ""
                 )
-                Text(text = "Dodaj naslovnu sliku")
+                Text(text = "Add cover photo")
             }
         }else{
             selectedImageUri.value?.let { uri ->

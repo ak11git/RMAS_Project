@@ -159,9 +159,9 @@ fun UserProfileScreen(
                         horizontalArrangement = Arrangement.SpaceEvenly,
                         modifier = Modifier.fillMaxWidth(),
                     ) {
-                        TextWithLabel(label = "Dodatih objekata", count = objs.count().toString())
-                        TextWithLabel(label = "Posećenih objekata", count = "2")
-                        TextWithLabel(label = "Broj bodova", count = userData?.points.toString())
+                        TextWithLabel(label = "Added objects", count = objs.count().toString())
+                        TextWithLabel(label = "Visited objects", count = "2")
+                        TextWithLabel(label = "Points", count = userData?.points.toString())
                     }
 
                     Spacer(modifier = Modifier.height(20.dp))
@@ -171,7 +171,7 @@ fun UserProfileScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp)
                 ){
-                    Text(text = "Osnovne informacije", style = MaterialTheme.typography.h6)
+                    Text(text = "User information", style = MaterialTheme.typography.h6)
                     Spacer(modifier = Modifier.height(13.dp))
                     if(isMy) {
                         Row(
@@ -179,7 +179,7 @@ fun UserProfileScreen(
                         ) {
                             Icon(imageVector = Icons.Filled.Email, contentDescription = "")
                             Spacer(modifier = Modifier.width(5.dp))
-                            Text(text = viewModel?.currentUser?.email ?: "Nema email-a")
+                            Text(text = viewModel?.currentUser?.email ?: "No email")
                         }
                         Spacer(modifier = Modifier.height(8.dp))
                     }
@@ -188,7 +188,7 @@ fun UserProfileScreen(
                     ) {
                         Icon(imageVector = Icons.Filled.Phone, contentDescription = "")
                         Spacer(modifier = Modifier.width(5.dp))
-                        Text(text = userData?.phoneNumber ?: "Nema broja telefona")
+                        Text(text = userData?.phoneNumber ?: "No phone number")
                     }
                 }
                 Spacer(modifier = Modifier.height(20.dp))
